@@ -11,18 +11,18 @@ public abstract class GamePanel extends JPanel {
     protected int dimx;
     protected int dimy;
 
-    public GamePanel(int playerSize, int playerX, int playerY){
+    public GamePanel(int playerSize, int playerX, int playerY) {
         super();
-        GameData.p = new Player(0,0,playerSize, playerX, playerY,playerSize);
+        GameData.p = new Player(0, 0, playerSize, playerX, playerY, playerSize);
     }
 
-    public void startTick(){
+    public void startTick() {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 onTick();
             }
-        },0, 10);
+        }, 0, 10);
     }
 
 

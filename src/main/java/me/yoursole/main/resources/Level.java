@@ -11,6 +11,17 @@ public class Level implements Serializable {
     private int dimxI;
 
     private int stage;
+    private int dimyI;
+
+    public Level(ArrayList<? extends GameObject> objects, Point respawn, boolean playerKills, int dimxI, int dimyI, int stage) {
+        this.objects = objects;
+        this.respawn = respawn;
+        this.playerKills = playerKills;
+        this.dimxI = dimxI;
+        this.dimyI = dimyI;
+
+        this.stage = stage;
+    }
 
     public ArrayList<? extends GameObject> getObjects() {
         return objects;
@@ -51,18 +62,8 @@ public class Level implements Serializable {
     public void setDimyI(int dimyI) {
         this.dimyI = dimyI;
     }
-    public int getStage(){
+
+    public int getStage() {
         return this.stage;
-    }
-    private int dimyI;
-
-    public Level(ArrayList<? extends GameObject> objects, Point respawn, boolean playerKills, int dimxI, int dimyI, int stage){
-        this.objects = objects;
-        this.respawn = respawn;
-        this.playerKills = playerKills;
-        this.dimxI = dimxI;
-        this.dimyI = dimyI;
-
-        this.stage = stage;
     }
 }
