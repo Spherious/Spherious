@@ -15,7 +15,7 @@ public abstract class GameObject {
     private Runnable r;
     private File texture;
 
-    public GameObject(float bouncyness, boolean isWinner, boolean isVisible, int sizeSet, boolean kills, boolean isCollidable, Runnable custom, String texturePath, boolean compute){
+    public GameObject(float bouncyness, boolean isWinner, boolean isVisible, int sizeSet, boolean kills, boolean isCollidable, Runnable custom, String texturePath, boolean compute) {
         this.bouncyness = bouncyness;
         this.isVisible = isVisible;
         this.sizeSet = sizeSet;
@@ -26,13 +26,13 @@ public abstract class GameObject {
         this.r = custom;
         this.compute = compute;
 
-        if(!texturePath.equals(""))
+        if (!texturePath.equals(""))
             this.texture = new File(texturePath);
         else
             this.texture = null;
     }
 
-    public File getTexture(){
+    public File getTexture() {
         return this.texture;
     }
 
@@ -61,12 +61,16 @@ public abstract class GameObject {
         return isCollidable;
     }
 
-    public void runFunc(){
+    public void runFunc() {
         r.run();
     }
 
-    public boolean compute(){return this.compute;}
+    public boolean compute() {
+        return this.compute;
+    }
 
     public abstract boolean insideObject(Point p); //used for collisions
+
+    public abstract Graphics2D paint(Graphics2D g2);
 
 }
