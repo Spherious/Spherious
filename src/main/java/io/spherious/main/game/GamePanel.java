@@ -1,5 +1,6 @@
 package io.spherious.main.game;
 
+import io.spherious.engine.resources.Player;
 import io.spherious.main.game.gameValues.GameData;
 
 import javax.swing.*;

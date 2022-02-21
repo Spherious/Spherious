@@ -16,22 +16,24 @@
     </properties>
     <packaging>jar</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>io.spherious</groupId>
-            <artifactId>spherious-engine</artifactId>
-            <version>0.0.3</version>
-        </dependency>
-    </dependencies>
-
     <repositories>
         <repository>
             <id>github</id>
-            <url>https://maven.pkg.github.com/Spherious/game-engine/packages</url>
+            <url>https://maven.pkg.github.com/Spherious/game-engine</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
         </repository>
     </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.spherious</groupId>
+            <artifactId>spherious-engine</artifactId>
+            <version>0.0.5</version>
+        </dependency>
+    </dependencies>
+
+
 
 </project>

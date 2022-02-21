@@ -172,10 +172,13 @@ public class GameFrameMainPanel extends GamePanel {
             return;
         }
 
-        collideWithWall();
+        Collision.collideWithWall(GameData.p,this.dimx,this.dimy, (float) this.compression);
 
         for (GameObject r : this.l.getObjects()) {
-            if (Collision(r)) return;
+            if (Collision.collideWithObject(r, GameData.p)){
+                boxFunctions(r);
+                return;
+            }
         }
 
 
@@ -220,18 +223,7 @@ public class GameFrameMainPanel extends GamePanel {
         r.runFunc();
     }
 
-    private void collideWithWall() {
-        float halfSize = GameData.p.getSize() / 2f;
-        if (GameData.p.getLocx() + halfSize >= this.dimx || GameData.p.getLocx() - halfSize < 0) { //side wall
-            GameData.p.getMovement().setX(GameData.p.getMovement().getX() * -1);
-            GameData.p.setLocx(GameData.p.getLocx() < this.dimx / 2f ? (int) (GameData.p.getSize() / 2f + (this.compression)) : (int) (this.dimx - GameData.p.getSize() / 2f - (this.compression)));
-        }
 
-        if (GameData.p.getLocy() + halfSize >= this.dimy || GameData.p.getLocy() - halfSize < 0) { //top/bottom wall
-            GameData.p.getMovement().setY(GameData.p.getMovement().getY() * -1);
-            GameData.p.setLocy((int) (GameData.p.getLocy() < this.dimy / 2f ? GameData.p.getSize() / 2f + (this.compression) : this.dimy - GameData.p.getSize() / 2f - (this.compression)));
-        }
-    }
 
     private void killPlayer() {
         GameData.p.setLocx(this.l.getRespawn().x);
