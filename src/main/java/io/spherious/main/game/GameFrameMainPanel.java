@@ -1,6 +1,7 @@
 package io.spherious.main.game;
 
 import io.spherious.engine.collision.Collision;
+import io.spherious.engine.movement.Movement;
 import io.spherious.engine.resources.GameObject;
 import io.spherious.engine.resources.RectObject;
 import io.spherious.main.game.gameValues.GameData;
@@ -166,7 +167,7 @@ public class GameFrameMainPanel extends GamePanel {
         }
 
         if (inWindow(rel)) {
-            applyMovement(rel);
+            Movement.applyMovement(rel, GameData.p);
         } else {
             killPlayer();
             return;
@@ -184,19 +185,7 @@ public class GameFrameMainPanel extends GamePanel {
 
     }
 
-    private void applyMovement(Point rel) {
-        float dx = GameData.p.getMovement().getX();
-        float dy = GameData.p.getMovement().getY();
 
-        dx += (distancex(GameData.p.getLocx(), GameData.p.getLocy(), rel.x, rel.y) / 100);
-        dy += (distancey(GameData.p.getLocx(), GameData.p.getLocy(), rel.x, rel.y) / 100);
-
-        dx /= 1.1;
-        dy /= 1.1;
-
-        GameData.p.getMovement().setX(dx);
-        GameData.p.getMovement().setY(dy);
-    }
 
 
 
@@ -241,15 +230,6 @@ public class GameFrameMainPanel extends GamePanel {
         return (float) Math.sqrt(Math.pow(y2 - y, 2) + Math.pow(x2 - x, 2));
     }
 
-
-
-    private float distancex(double x, double y, double x2, double y2) {
-        return (float) (x2 - x);
-    }
-
-    private float distancey(double x, double y, double x2, double y2) {
-        return (float) (y2 - y);
-    }
 
     private boolean inWindow(Point p) {
         return (p.getX() >= 0 && p.getX() < this.dimx) && (p.getY() >= 0 && p.getY() < this.dimy);
