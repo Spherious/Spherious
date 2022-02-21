@@ -1,11 +1,12 @@
-package me.yoursole.main.game;
+package io.spherious.main.game;
 
-import me.yoursole.main.game.gameValues.GameData;
-import me.yoursole.main.resources.*;
+import io.spherious.main.game.gameValues.GameData;
+import io.spherious.main.resources.Level;
+import io.spherious.main.resources.Levels;
+import io.spherious.main.resources.*;
 
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
-import java.util.ArrayList;
 
 public class GameFrameMainPanel extends GamePanel {
     private final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -191,72 +192,7 @@ public class GameFrameMainPanel extends GamePanel {
         GameData.p.getMovement().setY(dy);
     }
 
-    private boolean collideWithObject(GameObject r) {
-        if (!r.compute()) //for backgrounds and sprites
-            return false;
 
-        ArrayList<Point> pointsInsidePlayer = GameData.p.getPointsInside();
-
-        Vector playerVel = GameData.p.getMovement(),
-                b = new Vector(0, 0),
-                bouncy = new Vector(r.getBouncyness(), r.getBouncyness()),
-                centerOfPlayer = new Vector((float) GameData.p.getLocx(), (float) GameData.p.getLocy());
-
-        int amountOfPointsInPlayerAndObject = 0;
-        ArrayList<Point> pointsInPlayerAndObject = new ArrayList<>();
-        for (Point p : pointsInsidePlayer) {
-            if (r.insideObject(p)) { //point is inside both the player and the object in question
-                Vector pointCenter = Vector.subtract(centerOfPlayer, new Vector(p.x, p.y));
-                b.add(pointCenter);
-                amountOfPointsInPlayerAndObject++;
-                pointsInPlayerAndObject.add(p);
-            }
-        }
-
-        if (amountOfPointsInPlayerAndObject != 0) {
-            if (r.isCollidable()) {
-
-                //player location
-
-                float minDist = Integer.MAX_VALUE;
-
-                for (Point p : pointsInPlayerAndObject) {
-                    float d = distanceSquared(p.x, p.y, GameData.p.getLocx(), GameData.p.getLocy());
-                    if (d < minDist) {
-                        minDist = d;
-                    }
-                }
-                minDist = (float) Math.sqrt(minDist);
-                minDist = (float) ((GameData.p.getSize() / 2f - minDist) * 2);
-
-                b.normalize();
-
-                b.multElements(new Vector(minDist, minDist));
-
-
-                Vector playerLoc = new Vector((float) GameData.p.getLocx(), (float) GameData.p.getLocy());
-                playerLoc.add(b);
-
-                GameData.p.setLocx((int) (playerLoc.getX()));
-                GameData.p.setLocy((int) (playerLoc.getY()));
-                b.normalize();
-                //player velocity
-                b.makeNeg();
-
-                playerVel.multElements(b);
-                playerVel.multElements(bouncy);
-
-
-                GameData.p.setMovement(playerVel);
-
-
-            }
-            boxFunctions(r);
-        }
-
-
-        return false;
-    }
 
     private void boxFunctions(GameObject r) {
         if (r.isWinner()) {
@@ -310,9 +246,7 @@ public class GameFrameMainPanel extends GamePanel {
         return (float) Math.sqrt(Math.pow(y2 - y, 2) + Math.pow(x2 - x, 2));
     }
 
-    private float distanceSquared(double x, double y, double x2, double y2) {
-        return (float) ((float) Math.pow(y2 - y, 2) + Math.pow(x2 - x, 2));
-    }
+
 
     private float distancex(double x, double y, double x2, double y2) {
         return (float) (x2 - x);
