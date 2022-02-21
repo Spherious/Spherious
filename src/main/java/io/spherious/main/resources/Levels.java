@@ -1,5 +1,7 @@
 package io.spherious.main.resources;
 
+import io.spherious.engine.resources.RectObject;
+
 import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;

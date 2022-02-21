@@ -1,5 +1,8 @@
 package io.spherious.main.game;
 
+import io.spherious.engine.collision.Collision;
+import io.spherious.engine.resources.GameObject;
+import io.spherious.engine.resources.RectObject;
 import io.spherious.main.game.gameValues.GameData;
 import io.spherious.main.resources.Level;
 import io.spherious.main.resources.Levels;
@@ -172,7 +175,7 @@ public class GameFrameMainPanel extends GamePanel {
         collideWithWall();
 
         for (GameObject r : this.l.getObjects()) {
-            if (collideWithObject(r)) return;
+            if (Collision(r)) return;
         }
 
 

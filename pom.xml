@@ -20,7 +20,7 @@
         <dependency>
             <groupId>io.spherious</groupId>
             <artifactId>spherious-engine</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>0.0.3</version>
         </dependency>
     </dependencies>
 
