@@ -1,5 +1,6 @@
 package io.spherious.main.resources;
 
+import io.spherious.engine.resources.EllipseObject;
 import io.spherious.engine.resources.RectObject;
 
 import java.awt.*;
@@ -33,34 +34,22 @@ public enum Levels {
 
 
     LEVEL2(new Level(new ArrayList<>() {{
-        add(new RectObject(450, 100, 640, 150, 0.1f, false, true, 50, false, true, () -> {
 
-        }, "", true));
-        add(new RectObject(450, 1, 500, 100, 0.1f, false, true, 50, false, true, () -> {
-
-        }, "", true));
-        add(new RectObject(590, 1, 640, 100, 0.1f, false, true, 50, false, true, () -> {
-
-        }, "", true));
-
-        add(new RectObject(570, 400, 920, 420, 2, false, true, 50, false, true, () -> {
-
-        }, "", true));
-        add(new RectObject(570, 400, 590, 750, 0.1f, false, true, 50, true, true, () -> {
-
-        }, "", true));
-        add(new RectObject(570, 730, 920, 750, 0.1f, false, true, 50, true, true, () -> {
-
-        }, "", true));
-        add(new RectObject(900, 400, 920, 750, 0.1f, false, true, 50, true, true, () -> {
-
-        }, "", true));
 
         add(new RectObject(530, 1, 560, 30, 0.1f, true, true, 50, false, true, () -> {
 
         }, "assets/grass.jpg", true));
 
-    }}, new Point(650, 450), false, 1500, 1000, 2));
+    }}, new Point(650, 450), false, 1500, 1000, 2)),
+
+
+
+    LEVEL3(new Level(new ArrayList<>() {{
+        add(new EllipseObject(new Point(250,250),20,40,1,false,true, 50,false,true,()->{
+
+        },"",true));
+
+    }}, new Point(50, 50), false, 1500, 1000, 3));
 
 
     private final Level l;

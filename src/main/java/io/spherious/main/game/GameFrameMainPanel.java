@@ -7,7 +7,6 @@ import io.spherious.engine.resources.RectObject;
 import io.spherious.main.game.gameValues.GameData;
 import io.spherious.main.resources.Level;
 import io.spherious.main.resources.Levels;
-import io.spherious.main.resources.*;
 
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
@@ -139,8 +138,7 @@ public class GameFrameMainPanel extends GamePanel {
         Point window = new Point();
         try {
             window = this.getLocationOnScreen();
-        } catch (IllegalComponentStateException ignored) {
-        }
+        } catch (IllegalComponentStateException ignored) {}
 
 
         this.rel = new Point(mouse.x - window.x, mouse.y - window.y);
