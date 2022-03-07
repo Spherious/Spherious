@@ -19,7 +19,7 @@
     <repositories>
         <repository>
             <id>github</id>
-            <url>https://maven.pkg.github.com/Spherious/game-engine</url>
+            <url>https://maven.pkg.github.com/Spherious/game-engine/</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
@@ -30,7 +30,7 @@
         <dependency>
             <groupId>io.spherious</groupId>
             <artifactId>spherious-engine</artifactId>
-            <version>0.0.9</version>
+            <version>0.0.18</version>
         </dependency>
     </dependencies>
 
