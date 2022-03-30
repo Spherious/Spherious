@@ -7,7 +7,7 @@ public class Application {
     public static void main(String[] args) {
         new GameFrame();
 
-        //System.out.println(reflect(new Vector2D(-10,.5), new Vector2D(1,0)));
+        //System.out.println(reflect(new Vector2D(-10,.5), new Vector2D(1,1)));
 //        for (int i = -100; i < 100; i++) {
 //            for (int j = -100; j < 100; j++) {
 //                for (int k = -100; k < 100; k++) {
